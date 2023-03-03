@@ -48,6 +48,22 @@ int check_board(board_t board)
 				return -1;
 		}
 	}
+
+	if (board[0][0] == board[1][1] && board[1][1] == board[2][2]) {
+		if (board[0][0] == 'X') {
+			return 1;
+		} else if (board[0][0] == 'O') {
+			return -1;
+		}
+	}
+
+	if (board[0][2] == board[1][1] && board[1][1] == board[2][0]) {
+		if (board[0][2] == 'X') {
+			return 1;
+		} else if (board[0][2] == 'O') {
+			return -1;
+		}
+	}
 	return 0;
 }
 
@@ -123,6 +139,18 @@ int main(int argc, char **argv)
 		return 0;
 	} else if (!strcmp(argv[1], "overt")) {
 		char *board_val[]  = { "X", "X", "O", "_", "_", "O", "_", "_", "O"};
+		init_board(&board, board_val);
+		print_board(board);
+		print_res(check_board(board));
+		return 0;
+	} else if (!strcmp(argv[1], "diag1")) {
+		char *board_val[]  = {"O", "X", "X", "_", "O", "X", "X", "_", "O"};
+		init_board(&board, board_val);
+		print_board(board);
+		print_res(check_board(board));
+		return 0;
+	} else if (!strcmp(argv[1], "diag2")) {
+		char *board_val[]  = {"O", "X", "X", "_", "X", "X", "X", "_", "O"};
 		init_board(&board, board_val);
 		print_board(board);
 		print_res(check_board(board));
