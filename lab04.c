@@ -41,24 +41,20 @@ int main(int argc, char **argv)
 		init_board(&board, board_val);
 		print_board(board);
 		return 0;
-	}
-
-	if (!strcmp(argv[1], "xhoriz")) {
+	} else if (!strcmp(argv[1], "xhoriz")) {
 		char *board_val[] = {"X", "X", "X", "_", "O", "_", "_", "_", "O"};
 		init_board(&board, board_val);
 		print_board(board);
 		printf("X wins\n");
 		return 0;
-	}
-
-	if (!strcmp(argv[1], "draw")) {
+	} else if (!strcmp(argv[1], "draw")) {
 		char *board_val[] = {"X", "O", "X", "O", "X", "O", "O", "X", "O"};
 		init_board(&board, board_val);
 		print_board(board);
 		printf("draw\n");
 		return 0;
+	} else {
+		printf("invalid arguments\n");
+		exit(-1);
 	}
-
-	printf("invalid arguments\n");
-	exit(-1);
 }
