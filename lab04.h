@@ -8,4 +8,3 @@ void init_board(board_t board, char **argv);
 void print_board(board_t board);
 
 int check_board(board_t board);
-
