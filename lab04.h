@@ -3,7 +3,7 @@
 
 typedef char board_t[3][3];
 
-void init_board(board_t board, char **board_val);
+void init_board(board_t *board, char **board_val);
 
 void print_board(board_t board);
 
