@@ -114,18 +114,22 @@ int main(int argc, char **argv)
 		    (board[0][1] == board[2][1]) && (board[0][2] == 'O') &&
 		    (board[0][2] == board[2][2])) {
 			printf("init success\n");
+			return 0;
 		} else {
 			printf("init fail\n");
+			return 0;
 		}
 	} else if (!strcmp(argv[1], "board")) {
 		char *board_val[] = {"X", "_", "O", "_", "X", "_", "_", "_", "O"};
 		init_board(&board, board_val);
 		print_board(board);
+		return 0;
 	} else if (!strcmp(argv[1], "check")) {
 		board[0][0] = board[0][1] = board[0][2] = 'X';
 		board[1][0] = board[1][2] = board[2][0] = board[2][1] = '_';
 		board[1][1] = board[2][2] = 'O';
 		print_res(check_board(board));
+		return 0;
 	} else if (!strcmp(argv[1], "xhoriz")) {
 		char *board_val[] = {"X", "X", "X", "_", "O", "_", "_", "_", "O"};
 		init_board(&board, board_val);
@@ -156,8 +160,8 @@ int main(int argc, char **argv)
 		print_board(board);
 		print_res(check_board(board));
 		return 0;
-	} else {
-		printf("invalid arguments\n");
-		exit(-1);
 	}
+
+	printf("invalid arguments\n");
+	exit(-1);
 }
