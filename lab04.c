@@ -135,7 +135,7 @@ int main(int argc, char **argv)
 		char *board_val[] = {"X", "X", "X", "_", "O", "_", "_", "_", "O"};
 		init_board(&board, board_val);
 		print_board(board);
-		printf("X wins\n");
+		print_res(check_board(board));
 		return 0;
 	} else if (!strcmp(argv[1], "overt")) {
 		char *board_val[]  = { "X", "X", "O", "_", "_", "O", "_", "_", "O"};
@@ -159,7 +159,7 @@ int main(int argc, char **argv)
 		char *board_val[] = {"X", "O", "X", "O", "X", "O", "O", "X", "O"};
 		init_board(&board, board_val);
 		print_board(board);
-		printf("draw\n");
+		print_res(check_board(board));
 		return 0;
 	} else {
 		printf("invalid arguments\n");
