@@ -29,18 +29,16 @@ void print_board(board_t board)
 
 int check_board(board_t board)
 {
-	/* row */
 	for (int i = 0; i < BOARD_SZ; i++) {
+		/* row */
 		if (board[i][0] == board[i][1] && board[i][1] == board[i][2]) {
 			if (board[i][0] == 'X')
 				return 1;
 			else if (board[i][0] == 'O')
 				return -1;
 		}
-	}
 
-	/* col */
-	for (int i = 0; i < BOARD_SZ; i++) {
+		/* column */
 		if (board[0][i] == board[1][i] && board[1][i] == board[2][i]) {
 			if (board[0][i] == 'X')
 				return 1;
@@ -49,6 +47,7 @@ int check_board(board_t board)
 		}
 	}
 
+	/* backward diagnol */
 	if (board[0][0] == board[1][1] && board[1][1] == board[2][2]) {
 		if (board[0][0] == 'X') {
 			return 1;
@@ -57,6 +56,7 @@ int check_board(board_t board)
 		}
 	}
 
+	/* forward diagnol */
 	if (board[0][2] == board[1][1] && board[1][1] == board[2][0]) {
 		if (board[0][2] == 'X') {
 			return 1;
@@ -64,6 +64,8 @@ int check_board(board_t board)
 			return -1;
 		}
 	}
+
+	/* draw */
 	return 0;
 }
 
@@ -95,13 +97,6 @@ int main(int argc, char **argv)
 		init_board(&board, board_val);
 		print_board(board);
 		return 0;
-	} else if (!strcmp(argv[1], "debug")) {
-		/* debug case */
-		char *board_val[] = {"O", "_", "_", "X", "X", "X", "O", "_", "_"};
-		init_board(&board, board_val);
-		print_board(board);
-		print_res(check_board(board));
-		return 0;
 	} else if (!strcmp(argv[1], "print")) {
 		for (int r = 0; r < BOARD_SZ; r++) {
 			for (int c = 0; c < BOARD_SZ; c++) {
@@ -111,7 +106,7 @@ int main(int argc, char **argv)
 		print_board(board);
 		return 0;
 	} else if (!strcmp(argv[1], "init")) {
-		char *board_val[]  = {"X", "_", "O", "_", "X", "_", "_", "_", "O"};
+		char *board_val[] = {"X", "_", "O", "_", "X", "_", "_", "_", "O"};
 		init_board(&board, board_val);
 		if ((board[0][0] == 'X') && (board[0][0] == board[1][1]) &&
 		    (board[0][1] == '_') && (board[0][1] == board[1][0]) &&
@@ -138,19 +133,19 @@ int main(int argc, char **argv)
 		print_res(check_board(board));
 		return 0;
 	} else if (!strcmp(argv[1], "overt")) {
-		char *board_val[]  = { "X", "X", "O", "_", "_", "O", "_", "_", "O"};
+		char *board_val[] = { "X", "X", "O", "_", "_", "O", "_", "_", "O"};
 		init_board(&board, board_val);
 		print_board(board);
 		print_res(check_board(board));
 		return 0;
 	} else if (!strcmp(argv[1], "diag1")) {
-		char *board_val[]  = {"O", "X", "X", "_", "O", "X", "X", "_", "O"};
+		char *board_val[] = {"O", "X", "X", "_", "O", "X", "X", "_", "O"};
 		init_board(&board, board_val);
 		print_board(board);
 		print_res(check_board(board));
 		return 0;
 	} else if (!strcmp(argv[1], "diag2")) {
-		char *board_val[]  = {"O", "X", "X", "_", "X", "X", "X", "_", "O"};
+		char *board_val[] = {"O", "X", "X", "_", "X", "X", "X", "_", "O"};
 		init_board(&board, board_val);
 		print_board(board);
 		print_res(check_board(board));
